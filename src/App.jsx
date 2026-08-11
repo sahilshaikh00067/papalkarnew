@@ -4,7 +4,20 @@ import dr2 from "./assets/dr2.jpg";
 import dr3 from "./assets/dr3.jpeg";
 import dr4 from "./assets/dr4.jpeg";
 import dr5 from "./assets/dr5.jpg";
+import dr6 from "./assets/dr6.jpg";
+import dr7 from "./assets/dr7.jpg";
+import dr8 from "./assets/dr8.jpg";
+import dr9 from "./assets/dr9.jpg";
+import dr10 from "./assets/dr10.jpg";
+import dr11 from "./assets/dr11.jpg";
+import dr12 from "./assets/dr12.jpg";
+import dr13 from "./assets/dr13.jpg";
+import dr14 from "./assets/dr14.jpg";
+import dr15 from "./assets/dr15.jpg";
+import advance from "./assets/advance.jpg";
+import dr16 from "./assets/dr16.jpg";
 import logopapa from "./assets/logopapa.png";
+
 
 
 
@@ -42,8 +55,8 @@ const APPOINTMENT_LINK = waLink("Hi, I would like to book an appointment at Papa
 /* ------------------------------ Image library (clinic / hospital only, license-free) ------------------------------ */
 const IMG = {
   hero: dr1, // hospital reception
-  technology: dr4,
-  legacy: dr5,
+  technology: advance,
+  legacy: dr4,
 };
 
 const GALLERY = [
@@ -166,7 +179,7 @@ const Ic = {
   award: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><circle cx="12" cy="8" r="6" /><path d="M9 13.5 7 22l5-3 5 3-2-8.5" /></svg>),
   users: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8" /></svg>),
   pulse: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>),
-  stetho: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M4.5 3v6a4.5 4.5 0 0 0 9 0V3M9 15.5a5.5 5.5 0 0 0 11 0V13" /><circle cx="20" cy="9" r="2" /><circle cx="9" cy="19.5" r="2.5" /></svg>),
+  // stetho: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M4.5 3v6a4.5 4.5 0 0 0 9 0V3M9 15.5a5.5 5.5 0 0 0 11 0V13" /><circle cx="20" cy="9" r="2" /><circle cx="9" cy="19.5" r="2.5" /></svg>),
   scope: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><circle cx="9" cy="9" r="6" /><path d="m14 14 7 7" /></svg>),
   drop: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M12 2s7 7.5 7 12.5A7 7 0 0 1 5 14.5C5 9.5 12 2 12 2Z" /></svg>),
   wave: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M2 12h3l2-7 4 14 3-10 2 5h6" /></svg>),
@@ -420,17 +433,29 @@ const NAV = [
 ];
 
 const SERVICES = [
-  { icon: "scope", title: "Upper GI Endoscopy", short: "Examine the food pipe, stomach & duodenum", desc: "A minimally invasive procedure using a flexible camera to examine the food pipe (esophagus), stomach and the first part of the small intestine (duodenum). It helps diagnose conditions such as acidity, ulcers, bleeding, inflammation and abnormal growths.", img: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "spiral", title: "Colonoscopy", short: "Detailed evaluation of the large intestine", desc: "A detailed examination of the large intestine (colon) using a flexible camera. It is useful for evaluating blood in stools, constipation, diarrhoea, abdominal pain, unexplained weight loss and for early detection of colorectal polyps and cancer.", img: "https://images.unsplash.com/photo-1638202993928-7267aad84c31?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "drop", title: "ERCP", short: "Bile duct & pancreatic duct treatment", desc: "Endoscopic Retrograde Cholangiopancreatography (ERCP) is an advanced endoscopic procedure used to diagnose and treat problems involving the bile ducts and pancreatic ducts, including stones, blockages, strictures and other abnormalities. It can often help avoid the need for major surgery.", img: "https://images.unsplash.com/photo-1758691461990-03b49d969495?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "target", title: "Foreign Body Removal", short: "Safe endoscopic retrieval, no surgery needed", desc: "Accidentally swallowed or lodged objects such as coins, dentures, pins, needles, bones, buttons and other foreign bodies can often be safely removed using endoscopy, helping avoid conventional surgery.", img: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "pulse", title: "Hematemesis / GI Bleeding", short: "Therapeutic control of GI bleeding", desc: "Upper gastrointestinal bleeding, including vomiting of blood, can be evaluated and treated through therapeutic endoscopy. Depending on the cause, bleeding can be controlled using banding, injection therapy, clipping, cautery or Argon Plasma Coagulation (APC).", img: "https://images.unsplash.com/photo-1550831107-1553da8c8464?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "band", title: "Variceal Banding", short: "Controls bleeding varices from liver disease", desc: "Enlarged veins (varices) in the food pipe, commonly associated with liver disease and cirrhosis, can bleed significantly. Endoscopic band ligation is used to control active bleeding and help prevent recurrent variceal bleeding.", img: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "expand", title: "Esophageal Dilatation", short: "Widens a narrowed food pipe", desc: "Narrowing of the food pipe (esophageal stricture) can cause difficulty or discomfort while swallowing. Endoscopic dilatation helps widen the narrowed segment and improve the passage of food.", img: "https://images.unsplash.com/photo-1666214277730-e9c7e755e5a3?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "tube", title: "Stenting for Malignancy", short: "Restores passage in cancer-related blockage", desc: "When cancers involving the esophagus or bile ducts cause narrowing or obstruction, an endoscopically placed stent can help restore the passage and improve the ability to swallow or relieve obstruction-related symptoms.", img: "https://images.unsplash.com/photo-1778151270757-f3793f65e2de?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "feed", title: "PEG Tube Placement", short: "Safe long-term feeding access", desc: "Percutaneous Endoscopic Gastrostomy (PEG) allows a feeding tube to be placed directly into the stomach for patients who are unable to take adequate nutrition orally. It provides a safe and convenient route for long-term enteral feeding when required.", img: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "cut", title: "Polypectomy", short: "Removes polyps found during colonoscopy", desc: "Polyps, or abnormal tissue growths, found during colonoscopy can often be removed endoscopically and sent for further examination. Removing certain polyps can help reduce the future risk of colorectal cancer.", img: "https://images.unsplash.com/photo-1631217871099-88310a909a32?auto=format&fit=crop&w=1000&q=80" },
-  { icon: "leaf", title: "Piles Banding", short: "Minimally invasive hemorrhoid treatment", desc: "Rubber band ligation is a minimally invasive treatment for suitable cases of piles (hemorrhoids). A small band is placed around the hemorrhoid to reduce its blood supply, helping relieve bleeding, swelling and discomfort.", img: "https://images.unsplash.com/photo-1549856625-824ce09aefc8?auto=format&fit=crop&w=1000&q=80" },
+
+{ icon: "scope", title: "Upper GI Endoscopy", short: "Examine the food pipe, stomach & duodenum", desc: "A minimally invasive procedure using a flexible camera to examine the food pipe (esophagus), stomach and the first part of the small intestine (duodenum). It helps diagnose conditions such as acidity, ulcers, bleeding, inflammation and abnormal growths.", img: dr6 },
+
+{ icon: "spiral", title: "Colonoscopy", short: "Detailed evaluation of the large intestine", desc: "A detailed examination of the large intestine (colon) using a flexible camera. It is useful for evaluating blood in stools, constipation, diarrhoea, abdominal pain, unexplained weight loss and for early detection of colorectal polyps and cancer.", img: dr7 },
+
+{ icon: "drop", title: "ERCP", short: "Bile duct & pancreatic duct treatment", desc: "Endoscopic Retrograde Cholangiopancreatography (ERCP) is an advanced endoscopic procedure used to diagnose and treat problems involving the bile ducts and pancreatic ducts, including stones, blockages, strictures and other abnormalities. It can often help avoid the need for major surgery.", img: dr8 },
+
+{ icon: "target", title: "Foreign Body Removal", short: "Safe endoscopic retrieval, no surgery needed", desc: "Accidentally swallowed or lodged objects such as coins, dentures, pins, needles, bones, buttons and other foreign bodies can often be safely removed using endoscopy, helping avoid conventional surgery.", img: dr9 },
+
+{ icon: "pulse", title: "Hematemesis / GI Bleeding", short: "Therapeutic control of GI bleeding", desc: "Upper gastrointestinal bleeding, including vomiting of blood, can be evaluated and treated through therapeutic endoscopy. Depending on the cause, bleeding can be controlled using banding, injection therapy, clipping, cautery or Argon Plasma Coagulation (APC).", img: dr10 },
+
+{ icon: "band", title: "Variceal Banding", short: "Controls bleeding varices from liver disease", desc: "Enlarged veins (varices) in the food pipe, commonly associated with liver disease and cirrhosis, can bleed significantly. Endoscopic band ligation is used to control active bleeding and help prevent recurrent variceal bleeding.", img: dr11 },
+
+{ icon: "expand", title: "Esophageal Dilatation", short: "Widens a narrowed food pipe", desc: "Narrowing of the food pipe (esophageal stricture) can cause difficulty or discomfort while swallowing. Endoscopic dilatation helps widen the narrowed segment and improve the passage of food.", img: dr12 },
+
+{ icon: "tube", title: "Stenting for Malignancy", short: "Restores passage in cancer-related blockage", desc: "When cancers involving the esophagus or bile ducts cause narrowing or obstruction, an endoscopically placed stent can help restore the passage and improve the ability to swallow or relieve obstruction-related symptoms.", img: dr13 },
+
+{ icon: "feed", title: "PEG Tube Placement", short: "Safe long-term feeding access", desc: "Percutaneous Endoscopic Gastrostomy (PEG) allows a feeding tube to be placed directly into the stomach for patients who are unable to take adequate nutrition orally. It provides a safe and convenient route for long-term enteral feeding when required.", img: dr9 },
+
+{ icon: "cut", title: "Polypectomy", short: "Removes polyps found during colonoscopy", desc: "Polyps, or abnormal tissue growths, found during colonoscopy can often be removed endoscopically and sent for further examination. Removing certain polyps can help reduce the future risk of colorectal cancer.", img: dr14 },
+
+{ icon: "leaf", title: "Piles Banding", short: "Minimally invasive hemorrhoid treatment", desc: "Rubber band ligation is a minimally invasive treatment for suitable cases of piles (hemorrhoids). A small band is placed around the hemorrhoid to reduce its blood supply, helping relieve bleeding, swelling and discomfort.", img: dr15 },
+
 ];
 
 const SERVICE_TAGS = ["Upper GI Endoscopy", "Colonoscopy", "ERCP", "Foreign Body Removal", "Endoscopic Hemostasis", "Variceal Banding", "Esophageal Dilatation", "Stenting", "PEG Tube Placement", "Polypectomy", "Piles Banding"];
@@ -475,6 +500,7 @@ export default function App() {
   const [scrollPct, setScrollPct] = useState(0);
   const [openFaq, setOpenFaq] = useState(0);
   const [heroMouse, setHeroMouse] = useState({ x: 50, y: 50 });
+  const [activeService, setActiveService] = useState(null);
 
   // quick request form
   const [formName, setFormName] = useState("");
@@ -492,6 +518,19 @@ export default function App() {
     window.addEventListener("scroll", onScroll);
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // lock body scroll while the service modal is open
+  useEffect(() => {
+    document.body.style.overflow = activeService !== null ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [activeService]);
+
+  // close modal on Escape key
+  useEffect(() => {
+    const onKey = (e) => { if (e.key === "Escape") setActiveService(null); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const onHeroMove = useCallback((e) => {
@@ -537,11 +576,11 @@ export default function App() {
               <img
                 src={logopapa}
                 alt="Logo"
-                className="relative w-19 h-14 object-contain"
+                className="relative w-29 h-20 object-contain"
               />            </span>
             <span className="leading-tight">
-              <span className={`block font-display font-semibold text-lg tracking-tight ${scrolled ? "text-[var(--navy)]" : ""}`}>Papalkar</span>
-              <span className={`block text-[10px] tracking-[0.18em] uppercase ${scrolled ? "text-[var(--slate)]" : ""}`}>Gastrocare · Pusad</span>
+              <span className={`block font-display font-semibold text-[24px] tracking-tight ${scrolled ? "text-[var(--navy)]" : ""}`}>Papalkar</span>
+              <span className={`block text-[15px] tracking-[0.18em] uppercase ${scrolled ? "text-[var(--slate)]" : ""}`}>Gastrocare · Pusad</span>
             </span>
           </a>
 
@@ -769,6 +808,9 @@ export default function App() {
         </div>
       </section>
 
+
+
+
       {/* ================= SERVICES — responsive 4-column grid, cards reveal one by one ================= */}
       <section id="services" className="py-24 lg:py-32 bg-[var(--cream)] relative overflow-hidden">
         <FacetRing className="top-10 -right-20" size={260} tone="rose" opacity={0.12} />
@@ -788,20 +830,34 @@ export default function App() {
               <Reveal key={i} delay={i * 90}>
                 <Tilt max={7} scale={1.02} glare={false} className="h-full">
                   <div className="shine facet-md bg-white h-full flex flex-col shadow-[0_18px_42px_-20px_rgba(10,31,59,.28)] border border-[var(--line)] overflow-hidden transition-shadow duration-500 hover:shadow-[0_28px_60px_-18px_rgba(200,17,85,.3)]">
-                    <div className="relative h-44 overflow-hidden shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setActiveService(i)}
+                      className="relative h-44 overflow-hidden shrink-0 text-left w-full"
+                      aria-label={`Read more about ${s.title}`}
+                    >
                       <SImg src={s.img} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 hover:scale-110" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)]/80 via-[var(--navy)]/5 to-transparent" />
                       <span className="absolute top-4 left-4 w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg">
                         {React.createElement(Ic[s.icon], { className: "w-4 h-4 text-[var(--rose)]" })}
                       </span>
                       <span className="absolute top-3 right-4 font-display text-white/25 text-3xl font-bold select-none">{String(i + 1).padStart(2, "0")}</span>
-                    </div>
+                    </button>
                     <div className="p-6 flex flex-col grow">
                       <h3 className="font-display font-semibold text-[var(--navy)] text-[16.5px] leading-snug">{s.title}</h3>
                       <p className="text-[13px] text-[var(--slate)] leading-relaxed mt-2 grow">{s.short}</p>
-                      <a href={waLink(`Hi, I would like to book an appointment for ${s.title} at Papalkar Gastrocare.`)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[var(--rose)] mt-4 group/link">
-                        Book Now <Ic.arrow className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
-                      </a>
+                      <div className="flex items-center justify-between gap-3 mt-4 pt-4 border-t border-[var(--line)]">
+                        <button
+                          type="button"
+                          onClick={() => setActiveService(i)}
+                          className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[var(--navy)] group/link"
+                        >
+                          Read More <Ic.arrow className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                        </button>
+                        <a href={waLink(`Hi, I would like to book an appointment for ${s.title} at Papalkar Gastrocare.`)} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[var(--rose)] group/link">
+                          Book Now <Ic.arrow className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
+                        </a>
+                      </div>
                     </div>
                   </div>
                 </Tilt>
@@ -811,13 +867,73 @@ export default function App() {
         </div>
       </section>
 
+      {/* ================= SERVICE DETAIL MODAL — premium read-more with image ================= */}
+      {activeService !== null && (
+        <div className="fixed inset-0 z-[70] flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
+          <div
+            onClick={() => setActiveService(null)}
+            className="absolute inset-0 bg-[var(--navy)]/72 backdrop-blur-sm"
+            style={{ animation: "fadeIn .3s ease" }}
+          />
+          <div
+            className="relative facet-lg bg-white w-full max-w-2xl max-h-[88vh] overflow-y-auto shadow-[0_40px_90px_-20px_rgba(10,31,59,.55)] scrollbar-hide"
+            style={{ animation: "fadeUp .45s cubic-bezier(.22,1,.36,1)" }}
+          >
+            <button
+              onClick={() => setActiveService(null)}
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/95 flex items-center justify-center shadow-lg text-[var(--navy)] hover:bg-[var(--rose)] hover:text-white transition-colors duration-300"
+              aria-label="Close"
+            >
+              <Ic.close className="w-5 h-5" />
+            </button>
+
+            <div className="relative h-60 sm:h-72 overflow-hidden">
+              <SImg src={SERVICES[activeService].img} alt={SERVICES[activeService].title} className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)]/85 via-[var(--navy)]/15 to-transparent" />
+              <div className="absolute bottom-5 left-6 right-16 flex items-center gap-3">
+                <span className="w-12 h-12 rounded-full bg-white/95 flex items-center justify-center shadow-lg shrink-0">
+                  {React.createElement(Ic[SERVICES[activeService].icon], { className: "w-5 h-5 text-[var(--rose)]" })}
+                </span>
+                <span className="font-display font-semibold text-white text-2xl sm:text-3xl leading-tight">{SERVICES[activeService].title}</span>
+              </div>
+            </div>
+
+            <div className="p-7 sm:p-9">
+              <span className="inline-flex items-center gap-2 text-[11px] tracking-[0.2em] uppercase text-[var(--rose)] font-semibold">
+                <span className="w-5 h-[2px] bg-[var(--rose)]" /> Procedure Overview
+              </span>
+              <p className="text-[15px] text-[var(--slate)] leading-relaxed mt-4">{SERVICES[activeService].desc}</p>
+
+              <div className="flex flex-wrap items-center gap-4 mt-8">
+                <Magnetic>
+                  <a
+                    href={waLink(`Hi, I would like to book an appointment for ${SERVICES[activeService].title} at Papalkar Gastrocare.`)}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="facet-btn inline-flex items-center gap-2 bg-[var(--rose)] hover:bg-[var(--rose2)] text-white font-semibold px-7 py-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_-10px_rgba(200,17,85,.6)]"
+                  >
+                    Book Appointment <Ic.arrow className="w-4 h-4" />
+                  </a>
+                </Magnetic>
+                <button
+                  onClick={() => setActiveService(null)}
+                  className="inline-flex items-center gap-2 text-[var(--navy)] font-medium px-2 py-4 border-b border-[var(--line)] hover:border-[var(--navy)] transition-colors"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ================= ADVANCED TECHNOLOGY & FACILITIES ================= */}
       <section id="technology" className="py-24 lg:py-32 bg-[var(--paper)] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
           <Reveal>
             <Halo soft>
               <Tilt max={8} scale={1.02} className="facet-lg relative shadow-[0_30px_60px_-20px_rgba(10,31,59,.3)]">
-                <SImg src={IMG.technology} alt="Advanced diagnostic technology at Papalkar Gastrocare" className="w-full h-[340px] sm:h-[420px] object-cover" />
+                <SImg src={IMG.technology} alt="Advanced diagnostic technology at Papalkar Gastrocare" className="w-full h-[700px] sm:h-[700px] object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[var(--navy)]/70 via-transparent to-transparent" />
                 <span className="absolute top-6 left-6 facet-sm bg-white/95 px-4 py-2 flex items-center gap-2">
                   <Ic.monitor className="w-4 h-4 text-[var(--rose)]" />
@@ -990,7 +1106,7 @@ export default function App() {
                 <span className="w-11 h-11 rounded-full bg-[var(--gold-soft)] flex items-center justify-center shrink-0"><Ic.pin className="w-5 h-5 text-[var(--gold)]" /></span>
                 <div>
                   <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--slate)]">Visit Us</p>
-                  <p className="text-[13px] text-[var(--navy)] font-medium leading-snug mt-0.5">Papalkar Heights, Pusad – 445204</p>
+                  <p className="text-[13px] text-[var(--navy)] font-medium leading-snug mt-0.5">Talao layout along with Papalkar heights – 445204</p>
                 </div>
               </Tilt>
             </div>
@@ -1141,15 +1257,15 @@ export default function App() {
             {/* ================= BRAND ================= */}
             <div className="group">
               <a href="#home" className="inline-flex items-center gap-4 mb-6">
-                <span className="relative flex h-19 w-15 items-center justify-center">
+                <span className="relative flex h-25 w-18 items-center justify-center">
                   <img
                     src={logopapa}
                     alt="Logo"
-                    className="relative w-19 h-14 object-contain"
+                    className="relative w-35 h-21 object-contain"
                   />                </span>
                 <span className="flex flex-col">
-                  <span className="font-display font-semibold text-white text-xl leading-none tracking-tight">Papalkar</span>
-                  <span className="mt-1 text-[11px] uppercase tracking-[0.24em] text-white/45">Gastrocare</span>
+                  <span className="font-display font-semibold text-white text-[26px] leading-none tracking-tight">Papalkar</span>
+                  <span className="mt-1 text-[15px] uppercase tracking-[0.24em] text-white/45">Gastrocare</span>
                 </span>
               </a>
 
