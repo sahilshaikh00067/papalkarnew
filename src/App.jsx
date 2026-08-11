@@ -24,16 +24,15 @@ import logopapa from "./assets/logopapa.png";
 
 /* ============================================================================
    PAPALKAR GASTROCARE — Pusad's First Gastroenterology Super-Specialty Centre
-   Ultra-premium single-file React + Tailwind build — v2.
+   Ultra-premium single-file React + Tailwind build — v3.
    Signature identity: "faceted cut" geometry (angled corners on
    buttons/cards/dividers) + a rotating gold-rose glow halo behind every
    key visual — a quiet, jewel-like premium language.
-   v2 changes: removed soft blurred "blob" circles in favour of rotating
-   faceted rings (on-brand, not generic); added a true 3D coverflow slider;
-   smoother, longer-eased tilt/hover everywhere; Services rebuilt as a
-   responsive 4-column card grid that reveals one-by-one on scroll; every
-   photograph replaced with hospital/clinic-appropriate imagery.
-   Zero extra npm packages — pure React state + CSS for every animation.
+   v3 changes: added a Consultation Hours section (today auto-highlighted,
+   live "open" status dot), added floating gold particle fields for extra
+   depth in the hero, added glass-premium frosted surfaces, and richer
+   glow/pulse micro-animations across key touchpoints — all pure CSS/React,
+   zero extra npm packages.
    ========================================================================== */
 
 /* ------------------------------ Business data (single source of truth) ------------------------------ */
@@ -51,6 +50,17 @@ const OLYMPUS_LINK = "https://medical.olympusamerica.com/products/evis-exera-iii
 
 const waLink = (msg) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 const APPOINTMENT_LINK = waLink("Hi, I would like to book an appointment at Papalkar Gastrocare.");
+
+/* ------------------------------ Consultation hours ------------------------------ */
+const HOURS = [
+  { day: "Monday", short: "Mon", open: "10:00 AM", close: "8:00 PM", closed: false },
+  { day: "Tuesday", short: "Tue", open: "10:00 AM", close: "8:00 PM", closed: false },
+  { day: "Wednesday", short: "Wed", open: "10:00 AM", close: "8:00 PM", closed: false },
+  { day: "Thursday", short: "Thu", open: "", close: "", closed: true },
+  { day: "Friday", short: "Fri", open: "10:00 AM", close: "8:00 PM", closed: false },
+  { day: "Saturday", short: "Sat", open: "10:00 AM", close: "8:00 PM", closed: false },
+  { day: "Sunday", short: "Sun", open: "10:00 AM", close: "2:00 PM", closed: false },
+];
 
 /* ------------------------------ Image library (clinic / hospital only, license-free) ------------------------------ */
 const IMG = {
@@ -102,6 +112,10 @@ const GlobalStyle = () => (
     @keyframes spinSlowRev{to{transform:rotate(-360deg)}}
     @keyframes rotateGem{0%,100%{transform:rotate(45deg) scale(1)}50%{transform:rotate(50deg) scale(1.05)}}
     @keyframes gradShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    @keyframes floatParticle{0%,100%{transform:translateY(0) translateX(0);opacity:.2}50%{transform:translateY(-28px) translateX(10px);opacity:.95}}
+    @keyframes glowPulse{0%,100%{opacity:.6;transform:scale(1);box-shadow:0 0 0 0 rgba(30,169,82,.55)}50%{opacity:1;transform:scale(1.3);box-shadow:0 0 0 7px rgba(30,169,82,0)}}
+    @keyframes goldPulse{0%,100%{box-shadow:0 0 0 0 rgba(201,162,39,.45)}50%{box-shadow:0 0 0 14px rgba(201,162,39,0)}}
+    @keyframes borderSweep{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 
     .reveal{opacity:0;}
     .reveal.in{animation:fadeUp .85s cubic-bezier(.22,1,.36,1) forwards;}
@@ -154,6 +168,27 @@ const GlobalStyle = () => (
       background:linear-gradient(90deg,var(--gold),var(--rose));
       box-shadow:0 0 10px rgba(201,162,39,.6);transition:width .1s linear;}
 
+    /* ---------- v3: floating gold particles ---------- */
+    .particle{position:absolute;border-radius:50%;pointer-events:none;
+      background:radial-gradient(circle,var(--gold) 0%,rgba(201,162,39,0) 70%);
+      animation:floatParticle 6s ease-in-out infinite;}
+
+    /* ---------- v3: live "open now" status dot ---------- */
+    .status-dot{display:inline-block;background:#1ea952;animation:glowPulse 2.2s ease-in-out infinite;}
+
+    /* ---------- v3: frosted glass premium surface ---------- */
+    .glass-premium{background:rgba(255,255,255,.045);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+
+    /* ---------- v3: today-highlight ring pulse ---------- */
+    .today-pulse{animation:goldPulse 2.6s ease-in-out infinite;}
+
+    /* ---------- v3: animated gradient border sweep for "today" card ---------- */
+    .border-sweep{position:relative;}
+    .border-sweep::before{content:'';position:absolute;inset:0;padding:1px;border-radius:inherit;
+      background:linear-gradient(120deg,var(--gold),transparent,var(--rose),transparent,var(--gold));
+      background-size:300% 300%;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+      -webkit-mask-composite:xor;mask-composite:exclude;animation:borderSweep 5s linear infinite;pointer-events:none;}
+
     ::selection{background:var(--rose);color:#fff;}
     .scrollbar-hide::-webkit-scrollbar{display:none;}
     .scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none;}
@@ -179,7 +214,6 @@ const Ic = {
   award: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><circle cx="12" cy="8" r="6" /><path d="M9 13.5 7 22l5-3 5 3-2-8.5" /></svg>),
   users: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8" /></svg>),
   pulse: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>),
-  // stetho: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M4.5 3v6a4.5 4.5 0 0 0 9 0V3M9 15.5a5.5 5.5 0 0 0 11 0V13" /><circle cx="20" cy="9" r="2" /><circle cx="9" cy="19.5" r="2.5" /></svg>),
   scope: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><circle cx="9" cy="9" r="6" /><path d="m14 14 7 7" /></svg>),
   drop: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M12 2s7 7.5 7 12.5A7 7 0 0 1 5 14.5C5 9.5 12 2 12 2Z" /></svg>),
   wave: (p) => (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" {...p}><path d="M2 12h3l2-7 4 14 3-10 2 5h6" /></svg>),
@@ -329,6 +363,40 @@ function FacetRing({ className = "", size = 260, tone = "gold", rev = false, opa
   );
 }
 
+/* ------------------------------ v3: Floating gold particle field (premium depth layer) ------------------------------ */
+function Particles({ count = 16, className = "" }) {
+  const items = React.useMemo(
+    () =>
+      Array.from({ length: count }, (_, i) => ({
+        id: i,
+        size: 2 + Math.random() * 4,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        delay: Math.random() * 6,
+        duration: 4 + Math.random() * 5,
+      })),
+    [count]
+  );
+  return (
+    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+      {items.map((p) => (
+        <span
+          key={p.id}
+          className="particle"
+          style={{
+            width: p.size,
+            height: p.size,
+            top: `${p.top}%`,
+            left: `${p.left}%`,
+            animationDelay: `${p.delay}s`,
+            animationDuration: `${p.duration}s`,
+          }}
+        />
+      ))}
+    </div>
+  );
+}
+
 /* ------------------------------ Resilient image (fallback if a URL ever fails) ------------------------------ */
 function SImg({ src, alt, className = "" }) {
   const [err, setErr] = useState(false);
@@ -428,6 +496,7 @@ function Coverflow3D({ images, height = 440, interval = 4200 }) {
 const NAV = [
   { label: "About Us", href: "#about" },
   { label: "Services", href: "#services" },
+  { label: "Hours", href: "#hours" },
   { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
@@ -487,6 +556,7 @@ const FAQS = [
   { q: "Is Papalkar Gastrocare the first of its kind in Pusad?", a: "Yes. Papalkar Gastrocare is Pusad's first dedicated Gastroenterology Super-Specialty Centre, carrying forward the legacy of Papalkar Nursing Home and Dr. Viren Papalkar, the city's first MD Medicine specialist and the physician who introduced endoscopy to Pusad." },
   { q: "Are endoscopy and colonoscopy safe procedures?", a: "Yes. Both are well-established, routinely performed diagnostic and therapeutic procedures, carried out on advanced endoscopic systems under proper monitoring for patient safety and comfort." },
   { q: "What is ERCP used for?", a: "ERCP (Endoscopic Retrograde Cholangiopancreatography) is used to diagnose and treat problems involving the bile ducts and pancreatic ducts, such as stones, blockages and strictures — often helping patients avoid major surgery." },
+  { q: "What are your consultation hours?", a: "We are open Monday, Tuesday, Wednesday, Friday and Saturday from 10:00 AM to 8:00 PM, and Sunday from 10:00 AM to 2:00 PM. We remain closed on Thursdays. We recommend calling or messaging on WhatsApp to confirm same-day availability." },
   { q: "How can I book an appointment?", a: "You can call or WhatsApp us directly, or simply tap any 'Book Appointment' button on this page to message our team on WhatsApp instantly." },
 ];
 
@@ -506,6 +576,26 @@ export default function App() {
   const [formName, setFormName] = useState("");
   const [formPhone, setFormPhone] = useState("");
   const [formConcern, setFormConcern] = useState("General Consultation");
+
+  // v3: today's index into HOURS (Mon=0 ... Sun=6), and a live "open now" flag
+  const todayIndex = (() => {
+    const d = new Date().getDay(); // 0 = Sunday
+    return d === 0 ? 6 : d - 1;
+  })();
+
+  const isOpenNow = (h, idx) => {
+    if (idx !== todayIndex || h.closed) return false;
+    const now = new Date();
+    const parse = (t) => {
+      const [time, mer] = t.split(" ");
+      let [hh, mm] = time.split(":").map(Number);
+      if (mer === "PM" && hh !== 12) hh += 12;
+      if (mer === "AM" && hh === 12) hh = 0;
+      return hh * 60 + mm;
+    };
+    const nowMins = now.getHours() * 60 + now.getMinutes();
+    return nowMins >= parse(h.open) && nowMins <= parse(h.close);
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -559,6 +649,10 @@ export default function App() {
             </a>
             <a href={`tel:${PHONE_2_TEL}`} className="flex items-center gap-2 hover:text-[var(--gold)] transition-colors">
               <Ic.phone className="w-3.5 h-3.5" /> {PHONE_2_DISPLAY}
+            </a>
+            <a href="#hours" className="flex items-center gap-2 hover:text-[var(--gold)] transition-colors">
+              <Ic.clock className="w-3.5 h-3.5" />
+              {HOURS[todayIndex].closed ? "Closed today" : `Today: ${HOURS[todayIndex].open} – ${HOURS[todayIndex].close}`}
             </a>
           </div>
           <div className="flex items-center gap-2">
@@ -635,6 +729,8 @@ export default function App() {
         {/* faceted rings replace the old blurred blob circles */}
         <FacetRing className="-top-16 -left-16" size={300} tone="gold" opacity={0.14} />
         <FacetRing className="bottom-0 right-0" size={220} tone="rose" rev opacity={0.16} />
+        {/* v3: floating gold particle field for extra depth */}
+        <Particles count={18} className="hidden sm:block" />
         {/* cursor glow */}
         <div className="pointer-events-none absolute inset-0 transition-all duration-300" style={{ background: `radial-gradient(500px circle at ${heroMouse.x}% ${heroMouse.y}%, rgba(255,255,255,.06), transparent 60%)` }} />
 
@@ -672,6 +768,16 @@ export default function App() {
                   <Ic.phone className="w-4 h-4" /> Call Now
                 </a>
               </div>
+            </Reveal>
+
+            {/* v3: live open/closed pill */}
+            <Reveal delay={340}>
+              <a href="#hours" className="glass-premium inline-flex items-center gap-2.5 mt-6 px-4 py-2.5 rounded-full border border-white/10 hover:border-[var(--gold)]/40 transition-colors">
+                <span className={`w-2 h-2 rounded-full ${HOURS[todayIndex].closed ? "bg-white/30" : "status-dot"}`} />
+                <span className="text-white/75 text-[12.5px] font-medium">
+                  {HOURS[todayIndex].closed ? "Closed today · see full hours" : `Open today · ${HOURS[todayIndex].open} – ${HOURS[todayIndex].close}`}
+                </span>
+              </a>
             </Reveal>
 
             {/* trust mini stats */}
@@ -1066,6 +1172,71 @@ export default function App() {
         </div>
       </section>
 
+      {/* ================= CONSULTATION HOURS ================= */}
+      <section id="hours" className="py-24 lg:py-32 grain-gradient relative overflow-hidden">
+        <FacetRing className="top-10 -left-20" size={260} tone="gold" opacity={0.14} />
+        <FacetRing className="-bottom-16 right-0" size={220} tone="rose" rev opacity={0.14} />
+        <Particles count={14} className="hidden sm:block" />
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <Reveal className="max-w-2xl mx-auto text-center">
+            <span className="inline-flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase text-[var(--gold)] font-semibold justify-center">
+              <span className="w-6 h-[2px] bg-[var(--gold)]" /> Consultation Hours <span className="w-6 h-[2px] bg-[var(--gold)]" />
+            </span>
+            <h2 className="font-display font-semibold text-white text-[32px] sm:text-[42px] leading-tight mt-4">
+              When You Can Reach Us
+            </h2>
+            <p className="text-white/60 mt-4">Plan your visit with confidence — or message us on WhatsApp any time to confirm same-day availability.</p>
+          </Reveal>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4 mt-14">
+            {HOURS.map((h, i) => {
+              const isToday = i === todayIndex;
+              const openNow = isOpenNow(h, i);
+              return (
+                <Reveal key={h.day} delay={i * 80}>
+                  <Tilt max={13} scale={1.05} glare={false} className="h-full">
+                    <div
+                      className={`facet-md h-full flex flex-col items-center text-center px-4 py-7 border transition-all duration-500 ${
+                        isToday
+                          ? "border-sweep today-pulse bg-gradient-to-b from-[var(--gold)]/20 to-white/[0.03] border-[var(--gold)]/50"
+                          : "glass-premium border-white/10 hover:border-[var(--gold)]/30"
+                      }`}
+                    >
+                      {isToday && (
+                        <span className="text-[10px] tracking-[0.2em] uppercase text-[var(--gold)] font-semibold mb-3 px-3 py-1 rounded-full border border-[var(--gold)]/40">
+                          Today
+                        </span>
+                      )}
+                      <span className={`w-11 h-11 rounded-full flex items-center justify-center mb-4 ${isToday ? "bg-[var(--gold)]/20" : "bg-white/5"}`}>
+                        <Ic.clock className={`w-5 h-5 ${isToday ? "text-[var(--gold)]" : "text-white/50"}`} />
+                      </span>
+                      <p className="font-display font-semibold text-white text-[15px]">{h.day}</p>
+                      <p className={`text-[12.5px] mt-2 leading-snug ${h.closed ? "text-white/35" : "text-white/70"}`}>
+                        {h.closed ? "Closed" : `${h.open} – ${h.close}`}
+                      </p>
+                      {!h.closed && (
+                        <span className="flex items-center gap-1.5 mt-3">
+                          <span className={`w-1.5 h-1.5 rounded-full ${openNow ? "status-dot" : "bg-white/25"}`} />
+                          <span className="text-[10px] uppercase tracking-wide text-white/40">{openNow ? "Open now" : "Open"}</span>
+                        </span>
+                      )}
+                    </div>
+                  </Tilt>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <Reveal delay={200} className="text-center mt-14">
+            <Magnetic>
+              <a href={APPOINTMENT_LINK} target="_blank" rel="noreferrer" className="facet-btn inline-flex items-center gap-2 bg-[var(--gold)] hover:bg-[#dab53a] text-[var(--navy)] font-semibold px-8 py-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_34px_-10px_rgba(201,162,39,.6)]">
+                Book Within Hours <Ic.arrow className="w-4 h-4" />
+              </a>
+            </Magnetic>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ================= QUICK CONNECT BANNER ================= */}
       <section className="py-20 grain-gradient relative overflow-hidden">
         <FacetRing className="-bottom-16 -right-10" size={280} tone="gold" rev opacity={0.16} />
@@ -1211,6 +1382,15 @@ export default function App() {
                   <div className="flex flex-col">
                     <a href={`tel:${PHONE_1_TEL}`} className="text-[14.5px] text-[var(--ink)] font-medium hover:text-[var(--rose)] transition-colors">{PHONE_1_DISPLAY}</a>
                     <a href={`tel:${PHONE_2_TEL}`} className="text-[14.5px] text-[var(--ink)] font-medium hover:text-[var(--rose)] transition-colors">{PHONE_2_DISPLAY}</a>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="w-11 h-11 rounded-full bg-[var(--rose-soft)] flex items-center justify-center shrink-0"><Ic.clock className="w-5 h-5 text-[var(--rose)]" /></span>
+                  <div>
+                    <p className="text-[14.5px] text-[var(--ink)] font-medium">
+                      {HOURS[todayIndex].closed ? "Closed today" : `Today: ${HOURS[todayIndex].open} – ${HOURS[todayIndex].close}`}
+                    </p>
+                    <a href="#hours" className="text-[12.5px] text-[var(--rose)] font-medium">View full weekly hours</a>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -1369,10 +1549,10 @@ export default function App() {
 
                 <li className="group flex gap-4">
                   <span className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.025] text-[var(--rose)] transition-all duration-300 group-hover:border-[var(--rose)]/40 group-hover:bg-[var(--rose)]/10">
-                    <span className="text-xs">◷</span>
+                    <Ic.clock className="h-3.5 w-3.5" />
                   </span>
                   <div className="text-[14px] leading-6 text-white/60">
-                    <b className="font-medium text-white/90">Hours:</b> Call or WhatsApp to confirm today's consultation timings
+                    <b className="font-medium text-white/90">Hours:</b> Mon, Tue, Wed, Fri &amp; Sat 10 AM–8 PM · Sun 10 AM–2 PM · Closed Thursdays
                   </div>
                 </li>
               </ul>
