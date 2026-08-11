@@ -1106,7 +1106,7 @@ export default function App() {
                 <span className="w-11 h-11 rounded-full bg-[var(--gold-soft)] flex items-center justify-center shrink-0"><Ic.pin className="w-5 h-5 text-[var(--gold)]" /></span>
                 <div>
                   <p className="text-[11px] tracking-[0.15em] uppercase text-[var(--slate)]">Visit Us</p>
-                  <p className="text-[13px] text-[var(--navy)] font-medium leading-snug mt-0.5">Talao layout along with Papalkar heights – 445204</p>
+                  <p className="text-[13px] text-[var(--navy)] font-medium leading-snug mt-0.5">Papalkar heights, Talao Layout, Pusad -445204</p>
                 </div>
               </Tilt>
             </div>
