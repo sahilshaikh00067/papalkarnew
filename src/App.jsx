@@ -676,7 +676,7 @@ export default function App() {
               />            </span>
             <span className="leading-tight">
               <span className={`block font-display font-semibold text-[24px] tracking-tight ${scrolled ? "text-[var(--navy)]" : ""}`}>Papalkar</span>
-              <span className={`block text-[15px] tracking-[0.18em] uppercase ${scrolled ? "text-[var(--slate)]" : ""}`}>Gastrocare <br/>
+              <span className={`block text-[15px] font-normal tracking-[0.1em] uppercase ${scrolled ? "text-[var(--slate)]" : ""}`}>Gastrocare <br/>
               पोट स्वस्थ आयुष्य मस्त</span>
             </span>
           </a>
@@ -746,7 +746,7 @@ export default function App() {
           <div>
             <Reveal>
               <span className="inline-flex items-center gap-2 text-[12px] tracking-[0.2em] uppercase text-[var(--gold)] border border-[var(--gold)]/40 px-4 py-2 facet-sm">
-                <Ic.shield className="w-3.5 h-3.5" /> Pusad's First Gastroenterology Super-Specialty Centre
+                <Ic.shield className="w-3.5 h-3.5" /> Pusad's First Gastroenterology Super-Speciality Centre
               </span>
             </Reveal>
             <Reveal delay={100}>
