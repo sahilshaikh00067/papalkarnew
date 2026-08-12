@@ -16,6 +16,8 @@ import dr14 from "./assets/dr14.jpg";
 import dr15 from "./assets/dr15.jpg";
 import advance from "./assets/advance.jpg";
 import dr16 from "./assets/dr16.jpg";
+import last from "./assets/last.jpg";
+
 import logopapa from "./assets/logopapa.png";
 
 
@@ -519,11 +521,11 @@ const SERVICES = [
 
 { icon: "tube", title: "Stenting for Malignancy", short: "Restores passage in cancer-related blockage", desc: "When cancers involving the esophagus or bile ducts cause narrowing or obstruction, an endoscopically placed stent can help restore the passage and improve the ability to swallow or relieve obstruction-related symptoms.", img: dr13 },
 
-{ icon: "feed", title: "PEG Tube Placement", short: "Safe long-term feeding access", desc: "Percutaneous Endoscopic Gastrostomy (PEG) allows a feeding tube to be placed directly into the stomach for patients who are unable to take adequate nutrition orally. It provides a safe and convenient route for long-term enteral feeding when required.", img: dr9 },
+{ icon: "feed", title: "PEG Tube Placement", short: "Safe long-term feeding access", desc: "Percutaneous Endoscopic Gastrostomy (PEG) allows a feeding tube to be placed directly into the stomach for patients who are unable to take adequate nutrition orally. It provides a safe and convenient route for long-term enteral feeding when required.", img: dr14 },
 
-{ icon: "cut", title: "Polypectomy", short: "Removes polyps found during colonoscopy", desc: "Polyps, or abnormal tissue growths, found during colonoscopy can often be removed endoscopically and sent for further examination. Removing certain polyps can help reduce the future risk of colorectal cancer.", img: dr14 },
+{ icon: "cut", title: "Polypectomy", short: "Removes polyps found during colonoscopy", desc: "Polyps, or abnormal tissue growths, found during colonoscopy can often be removed endoscopically and sent for further examination. Removing certain polyps can help reduce the future risk of colorectal cancer.", img: dr15 },
 
-{ icon: "leaf", title: "Piles Banding", short: "Minimally invasive hemorrhoid treatment", desc: "Rubber band ligation is a minimally invasive treatment for suitable cases of piles (hemorrhoids). A small band is placed around the hemorrhoid to reduce its blood supply, helping relieve bleeding, swelling and discomfort.", img: dr15 },
+{ icon: "leaf", title: "Piles Banding", short: "Minimally invasive hemorrhoid treatment", desc: "Rubber band ligation is a minimally invasive treatment for suitable cases of piles (hemorrhoids). A small band is placed around the hemorrhoid to reduce its blood supply, helping relieve bleeding, swelling and discomfort.", img: last },
 
 ];
 
@@ -674,7 +676,8 @@ export default function App() {
               />            </span>
             <span className="leading-tight">
               <span className={`block font-display font-semibold text-[24px] tracking-tight ${scrolled ? "text-[var(--navy)]" : ""}`}>Papalkar</span>
-              <span className={`block text-[15px] tracking-[0.18em] uppercase ${scrolled ? "text-[var(--slate)]" : ""}`}>Gastrocare · Pusad</span>
+              <span className={`block text-[15px] tracking-[0.18em] uppercase ${scrolled ? "text-[var(--slate)]" : ""}`}>Gastrocare <br/>
+              पोट स्वस्थ आयुष्य मस्त</span>
             </span>
           </a>
 
@@ -1143,7 +1146,7 @@ export default function App() {
             </Reveal>
             <Reveal delay={200}>
               <p className="text-[var(--slate)] leading-relaxed mt-5">
-                Papalkar Gastrocare carries forward the legacy of Papalkar Nursing Home, established by Dr. Viren Papalkar — one of Pusad's pioneering physicians and the city's first MD Medicine specialist. He was also the first physician in Pusad to introduce endoscopy services, marking an important milestone in the evolution of gastrointestinal care in the region.
+                Papalkar Gastrocare carries forward the legacy of Papalkar Nursing Home, established by Dr. Viren Papalkar — one of Pusad's pioneering physicians and the city's first MD Medicine specialist. He was also the first physician in Pusad to introduce endoscopy services 25 years back, marking an important milestone in the evolution of gastrointestinal care in the region.
               </p>
             </Reveal>
             <Reveal delay={300}>
